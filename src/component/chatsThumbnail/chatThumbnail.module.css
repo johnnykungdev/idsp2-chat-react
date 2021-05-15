@@ -1,0 +1,35 @@
+.chatThumbnail {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 80px auto;
+    border: 1px solid gray;
+    cursor: pointer;
+}
+
+.avatarContainer {
+    position: relative;
+}
+
+.avatar {
+    width: 80%;
+    height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.messageContainer {
+    padding: 0 20px;
+}
+
+.username {
+    text-align: left;
+    font-weight: bold;
+}
+
+.latestMessage {
+    text-align: left;
+    color: gray;
+
+}

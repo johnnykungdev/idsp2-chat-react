@@ -1,0 +1,23 @@
+.selfContainer {
+    height: 100px;
+    line-height: 100px;
+}
+
+.userContainer {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    height: 100px;
+    border: 1px solid gray;
+    margin: 5px 0;
+}
+
+.userContainer div {
+    line-height: 100px;
+    font-size: 22px;
+}
+
+.messageButton {
+    cursor: pointer;
+    background-color:  #92002F;
+    color: white;
+}

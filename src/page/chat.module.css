@@ -1,0 +1,12 @@
+.roompage {
+    height: 100%;
+    width: 100%;
+}
+
+.nav {
+    height: 75px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: brown;
+}
