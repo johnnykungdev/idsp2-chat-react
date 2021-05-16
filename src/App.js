@@ -6,7 +6,8 @@ import Login from "./page/login.page";
 import UsersPage from './page/users.page';
 
 import socket from "./util/socketIO.util";
-
+//backend url
+import url from "./util/backendUrl";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -16,7 +17,7 @@ function App() {
 
   useEffect(() => {
     //authentication
-    fetch("http://localhost:8000/api/user/authenticate", {
+    fetch("${url}/api/user/authenticate", {
       credentials: "include"
     })
     .then(resp => resp.json())
