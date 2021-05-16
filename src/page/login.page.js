@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import url from "../util/backendUrl";
+
 function Login(props) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -15,7 +17,7 @@ function Login(props) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        fetch("http://localhost:8000/api/user/login", {
+        fetch("${url}/api/user/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

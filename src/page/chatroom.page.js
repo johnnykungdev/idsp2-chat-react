@@ -7,6 +7,8 @@ import ChatInput from "../component/chatInput/chatInput";
 import socket from "../util/socketIO.util";
 //style
 import styles from "./chat.module.css";
+//backend url
+import url from "../util/backendUrl";
 
 function Chatroom(props) {
     // const [conversationId, setConversationId] = useState(null);
@@ -18,7 +20,7 @@ function Chatroom(props) {
         if (!conversationId) {
             console.log("your target is ", props.target);
             console.log("--- fetching ----")
-            fetch("http://localhost:8000/api/conversation", {
+            fetch("${url}/api/conversation", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

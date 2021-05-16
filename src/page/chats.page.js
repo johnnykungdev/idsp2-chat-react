@@ -6,14 +6,14 @@ import styles from "./chats.module.css";
 
 import ChatThumbnail from "../component/chatsThumbnail/chatThumbnail";
 //stubdata
-import stubdata from "../util/stubdata";
+import url from "../util/backendUrl";
 
 function Chats(props) {
     const [chats, setChats] = useState([]);
     const setPage = props.setPage;
 
     useEffect(() => {
-        fetch(`http://localhost:8000/api/conversation`, {
+        fetch(`${url}/api/conversation`, {
             credentials: "include"
         })
         .then(resp => resp.json())
