@@ -17,7 +17,7 @@ function Login(props) {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        fetch("${url}/api/user/login", {
+        fetch(`${url}/api/user/login`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import socket from "../../util/socketIO.util"
 //styles
 import styles from "./chatHistory.module.css";
+//backend url
+import url from "../../util/backendUrl";
 
 function ChatHistory(props) {
     const [messages, setMessages] = useState([]);
@@ -13,7 +15,7 @@ function ChatHistory(props) {
         console.log(props.conversationId);
 
         if (props.conversationId) {
-            fetch(`http://localhost:8000/api/conversation/${props.conversationId}/message`, {
+            fetch(`${url}/api/conversation/${props.conversationId}/message`, {
                 credentials: "include"
             })
             .then(resp => resp.json())

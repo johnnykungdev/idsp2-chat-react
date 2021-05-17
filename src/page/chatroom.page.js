@@ -20,7 +20,7 @@ function Chatroom(props) {
         if (!conversationId) {
             console.log("your target is ", props.target);
             console.log("--- fetching ----")
-            fetch("${url}/api/conversation", {
+            fetch(`${url}/api/conversation`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -35,7 +35,7 @@ function Chatroom(props) {
             .then(data => {
                 console.log(data);
                 setConversationId(data);
-                console.log(socket);
+                console.log("socket connection", socket.connected);
                 socket.emit("enter chatroom", {
                     conversationId: data
                 })
@@ -48,7 +48,18 @@ function Chatroom(props) {
                 conversationId
             })
         }
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        return () => {
+            console.log("is leaving chatroom, conversationId: ", conversationId);
+            console.log("socket.connection", socket.connected);
+            if (conversationId) {
+                console.log("emit leave room");
+                socket.emit("leaveChatroom", conversationId);
+            }
+        }
+    });
 
     const backToChats = (e) => {
         e.preventDefault();

@@ -7,10 +7,13 @@ import styles from "./chats.module.css";
 import ChatThumbnail from "../component/chatsThumbnail/chatThumbnail";
 //stubdata
 import url from "../util/backendUrl";
+//socket
+import socket from "../util/socketIO.util";
 
 function Chats(props) {
     const [chats, setChats] = useState([]);
     const setPage = props.setPage;
+    console.log(chats);
 
     useEffect(() => {
         fetch(`${url}/api/conversation`, {
@@ -22,9 +25,23 @@ function Chats(props) {
             setChats(data);
         })
         .catch(error => console.log(error))
-
-        // setChats(stubdata.chats);
     }, [])
+
+    useEffect(() => {
+        console.log(chats);
+        socket.on("updateChats", (newMessage) => {
+            console.log("coming in new Message", newMessage);
+            console.log(chats);
+            const clonedChats = [...chats];
+            console.log(clonedChats);
+            const changedConversationIndex = clonedChats.findIndex(chat => chat.conversationId === newMessage.conversationId);
+            console.log(changedConversationIndex);
+            clonedChats[changedConversationIndex].messages = [newMessage];
+            setChats(clonedChats);
+        })
+
+        return () => socket.off("updateChats");
+    }, [chats])
 
     let chatThumbnails;
     if (chats.length) {

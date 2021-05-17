@@ -17,7 +17,7 @@ function App() {
 
   useEffect(() => {
     //authentication
-    fetch("${url}/api/user/authenticate", {
+    fetch(`${url}/api/user/authenticate`, {
       credentials: "include"
     })
     .then(resp => resp.json())
