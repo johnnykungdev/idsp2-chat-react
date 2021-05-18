@@ -29,15 +29,15 @@ function Chats(props) {
 
     useEffect(() => {
         console.log(chats);
-        socket.on("updateChats", (newMessage) => {
-            console.log("coming in new Message", newMessage);
-            console.log(chats);
-            const clonedChats = [...chats];
-            console.log(clonedChats);
-            const changedConversationIndex = clonedChats.findIndex(chat => chat.conversationId === newMessage.conversationId);
-            console.log(changedConversationIndex);
-            clonedChats[changedConversationIndex].messages = [newMessage];
-            setChats(clonedChats);
+        socket.on("updateChats", (latestConversations) => {
+            // console.log("coming in new Message", newMessage);
+            // console.log(chats);
+            // const clonedChats = [...chats];
+            // console.log(clonedChats);
+            // const changedConversationIndex = clonedChats.findIndex(chat => chat.conversationId === newMessage.conversationId);
+            // console.log(changedConversationIndex);
+            // clonedChats[changedConversationIndex].messages = [newMessage];
+            setChats(latestConversations);
         })
 
         return () => socket.off("updateChats");
